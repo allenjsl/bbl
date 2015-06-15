@@ -1,0 +1,161 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Front.master.cs" Inherits="Web.masterpage.Front" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>组团端</title>
+    <link href="/css/sytle.css" rel="stylesheet" type="text/css" />
+    <link href="/css/boxy.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        <% if(InnerLogo!=null && InnerLogo.Trim()!=""){ %>.top{background:url(<%=InnerLogo%>) no-repeat 0 0;}<%}
+        else
+        { %>           
+          .top{background:url(<%=BigLogo%>) no-repeat 0 0;}                
+        <% }%>
+        
+   </style>
+   
+
+    <script src="/js/jquery.js" type="text/javascript"></script>
+
+    <script src="/js/back.js" type="text/javascript"></script>
+
+    <script src="/js/jquery.boxy.js" type="text/javascript"></script>
+
+    <script type="text/javascript"> 
+    $(function(){
+        $(".lineProduct h2").click(function(){
+            var h = $(this);
+            var $a = h.next();
+            if($a.length==0){
+                return;
+            }
+            $a.toggle();
+            var b=true;
+            if($a.css("display")=="none"){
+                b = false;
+            }else{
+                b = true;
+            }
+            $a.prev("h2").toggleClass("firstNav",b);
+        });
+    });
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- wrapper start -->
+    <div id="wrapper" class="mid">
+        <!-- top start -->
+        <div class="top">
+            <div class="topleft">
+                大连巴比来国际旅行社办公室营销系统</div>
+            <div class="topright" style="position: absolute; top: 0px; height: 87px; right: 5px;">
+                <ul>
+                    <li>
+                        <img src="/images/dateicon.gif" alt="" width="13" height="13" />现在时间：<span id="timeDiv"><%=DateTime.Now.ToString("yyyy年M月d日 dddd HH:mm:ss")   %></span></li>
+                    <li><a href="/GroupEnd/Default.aspx">
+                        <img src="/images/homeicon.gif" alt="网站首页" />网站首页</a></li>
+                    <li><a href="/Logout.aspx">
+                        <img src="/images/safeicon.gif" alt="安全退出" />安全退出</a></li>
+                </ul>
+            </div>
+            <div class="clearboth">
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        <% DateTime tmpDate = DateTime.Now;%>
+        serverDate = new Date(
+        <%=tmpDate.Year %>,
+        <%=tmpDate.Month-1 %>,
+        <%=tmpDate.Day %>,
+        <%=tmpDate.ToString("HH") %>,
+        <%=tmpDate.Minute %>,
+        <%=tmpDate.Second %>);
+        setInterval('getNowDate()',1000);
+        </script>
+
+        <!-- top end -->
+        <div class="main">
+            <!--left start-->
+            <div class="left">
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2Default">
+                        <a href="javascript:;">首页</a></h2>
+                    <ul style="display: none;" runat="server" id="ulDefault">
+                        <li><a href="/GroupEnd/Default.aspx" runat="server" id="linkDefault">首页</a></li>
+                        <li><a href="/GroupEnd/News/Newslist.aspx" runat="server" id="linkNewsList">最新动态</a></li>
+                        <li><a href="/GroupEnd/Messages/MessageBoard.aspx" runat="server" id="linkMessage">留言板</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2LineProduct">
+                        <a href="javascript:;">散客报名</a></h2>
+                    <ul style="display: none;" runat="server" id="ulLineProduct">
+                        <li><a href="/GroupEnd/LineList/LineProductsList.aspx" runat="server" id="linkLineProduct">
+                            散客报名</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2FitHairDay">
+                        <a href="javascript:;">散客天天发</a></h2>
+                    <ul style="display: none;" runat="server" id="ulFitHairDay">
+                        <li><a href="/GroupEnd/FitHairDay/FitHairDayList.aspx" runat="server" id="linkFitHairDay">
+                            散客天天发</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2SelectMoney">
+                        <a href="javascript:;">行程报价</a></h2>
+                    <ul style="display: none;" runat="server" id="ulSelectMoney">
+                        <li><a href="/GroupEnd/JourneyMoney/SelectMoney.aspx" runat="server" id="linkSelectMoney">
+                            我要询价</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2OrderList">
+                        <a href="javascript:void(0);">我的订单</a></h2>
+                    <ul style="display: none;" runat="server" id="ulOrderList">
+                        <li><a href="/GroupEnd/Orders/OrderList.aspx" runat="server" id="linkOrderList">我的订单</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2Account">
+                        <a href="javascript:void(0);">财务管理</a></h2>
+                    <ul style="display: none;" runat="server" id="ulAccount">
+                        <li><a href="/GroupEnd/AccountFinces/AccountList.aspx" runat="server" id="linkAccount">
+                            财务管理</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct">
+                    <h2 runat="server" id="h2SystemSet">
+                        <a href="javascript:;">系统设置</a></h2>
+                    <ul style="display: none;" runat="server" id="ulSystemSet">
+                        <li><a href="/GroupEnd/SystemSetting/CompanyInfo.aspx" runat="server" id="linkSystemSet">
+                            系统设置</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--left end-->
+            <div class="hr_10">
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="clearboth">
+            </div>
+            <!--mainbodyOut end-->
+        </div>
+    </div>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 20px;">
+        <tr>
+            <td height="35" align="center">
+               版权所有：<%=frontPage.SiteUserInfo.CompanyName%>
+                技术支持：杭州易诺科技
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

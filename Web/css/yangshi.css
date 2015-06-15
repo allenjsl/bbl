@@ -1,0 +1,12 @@
+﻿body {
+	font-size: 12px;
+	line-height: 20px;
+}
+.nav td{background:url(../images/index_03.gif) center no-repeat; height:41px; text-align:center; width:83px; padding:0px 20px;}
+.nav a{color:#006600; font-size:14px; font-weight:bold; text-decoration:none;}
+.boder{ border:1px solid #999999}
+.bai{color:#FFFFFF; font-size:14px;}
+.bai a{color:#FFFFFF; font-size:14px; text-decoration:none}
+.bai a:hover{color:#FFFFFF; font-size:14px; text-decoration:underline}
+.huang a{color:#FFFF00; font-size:14px; text-decoration:none}
+.huang a:hover{color:#FFFF00; font-size:14px; text-decoration:underline}

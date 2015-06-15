@@ -1,0 +1,33 @@
+﻿1.页面继承关系
+Eyousoft.Common.Page 命名空间下
+有两个基类 FrontPage,BackPage
+
+这两个基类  主要负责
+处理和存储用户信息，处理和存储用户权限，判断当前用户是否登录，以及其他一些页面的共性
+
+专线后台页面 继承于 BackPage,
+在弹窗中打开的页面继承BackPage的时候，
+须重写 PreOnInit方法 对 页面类型进行设置
+/// <summary>
+/// 
+/// </summary>
+/// <param name="e"></param>
+protected override void OnPreInit(EventArgs e)
+{
+    base.OnPreInit(e);
+    this.PageType = PageType.boxyPage;
+}
+
+组团后台页面 继承于 FrontPage
+
+2.页面标题结构
+模块名称_公司名称
+模块名称中 按从小到大的关系  进行编写 
+例如：子模块_父模块_公司名称
+
+在代码编写的时候，页面 只需初始化页面的 模块名称 ，基类会自动将公司名称 加到标题结尾 
+
+弹窗页面  只需初始化  页面模块名称 
+
+
+3.列表默认分页 ，按 单页显示 20条 记录

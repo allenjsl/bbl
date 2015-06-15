@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="bbldb" Class="CompanyInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.254;Initial Catalog=bbldb;User ID=sa" SettingsObjectName="EyouSoft.DAL.Properties.Settings" SettingsPropertyName="bbldbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_CompanyInfo" Member="tbl_CompanyInfo">
+    <Type Name="tbl_CompanyInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyType" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CompanyEnglishName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="License" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactTel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactMobile" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactFax" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CompanyAddress" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CompanyZip" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CompanySiteUrl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SystemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IssueTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

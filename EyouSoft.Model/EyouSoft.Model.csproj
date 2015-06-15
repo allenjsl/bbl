@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41BB31BF-A4C6-4994-AFBA-B559034010C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EyouSoft.Model</RootNamespace>
+    <AssemblyName>EyouSoft.Model</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminCenterStructure\AttendanceInfo.cs" />
+    <Compile Include="AdminCenterStructure\ContractInfo.cs" />
+    <Compile Include="AdminCenterStructure\DutyManager.cs" />
+    <Compile Include="AdminCenterStructure\FixedAsset.cs" />
+    <Compile Include="AdminCenterStructure\MeetingInfo.cs" />
+    <Compile Include="AdminCenterStructure\PersonalHistory.cs" />
+    <Compile Include="AdminCenterStructure\PersonnelInfo.cs" />
+    <Compile Include="AdminCenterStructure\RuleInfo.cs" />
+    <Compile Include="AdminCenterStructure\SchoolInfo.cs" />
+    <Compile Include="AdminCenterStructure\TrainPlan.cs" />
+    <Compile Include="AdminCenterStructure\TrainPlanAccepts.cs" />
+    <Compile Include="CompanyStructure\Area.cs" />
+    <Compile Include="CompanyStructure\CompanyAccount.cs" />
+    <Compile Include="CompanyStructure\CompanyBrand.cs" />
+    <Compile Include="CompanyStructure\CompanyInfo.cs" />
+    <Compile Include="CompanyStructure\CompanyPriceStand.cs" />
+    <Compile Include="CompanyStructure\CompanySetting.cs" />
+    <Compile Include="CompanyStructure\CompanySupplier.cs" />
+    <Compile Include="CompanyStructure\CompanyTemplate.cs" />
+    <Compile Include="CompanyStructure\CompanyUser.cs" />
+    <Compile Include="CompanyStructure\CustomerCallBackInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerCallBackResultInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerCareforInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerContactInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerMarketingInfo.cs" />
+    <Compile Include="CompanyStructure\CustomerMessage.cs" />
+    <Compile Include="CompanyStructure\CustomStand.cs" />
+    <Compile Include="CompanyStructure\MNotepadServiceInfo.cs" />
+    <Compile Include="CompanyStructure\SysHandleLogsNO.cs" />
+    <Compile Include="EnumType\SiteStructure.cs" />
+    <Compile Include="EnumType\SupplierStructure.cs" />
+    <Compile Include="EnumType\SysStructure.cs" />
+    <Compile Include="FinanceStructure\MFaPiaoInfo.cs" />
+    <Compile Include="FinanceStructure\MGoldDetailInfo.cs" />
+    <Compile Include="FinanceStructure\MShouRuInfo.cs" />
+    <Compile Include="FinanceStructure\MSpendRegister.cs" />
+    <Compile Include="FinanceStructure\MZhiChuInfo.cs" />
+    <Compile Include="PlanStructure\TrafficInfo.cs" />
+    <Compile Include="SiteStructure\SiteBasicConfig.cs" />
+    <Compile Include="SiteStructure\SiteChangePic.cs" />
+    <Compile Include="SiteStructure\SiteFriendLink.cs" />
+    <Compile Include="SiteStructure\TicketPolicy.cs" />
+    <Compile Include="StatisticStructure\HuiKuanLvInfo.cs" />
+    <Compile Include="StatisticStructure\MCommissionStatInfo.cs" />
+    <Compile Include="StatisticStructure\MRefundStatistic.cs" />
+    <Compile Include="StatisticStructure\MSalesStatistics.cs" />
+    <Compile Include="StatisticStructure\SoldStatistic.cs" />
+    <Compile Include="StatisticStructure\TicketOutStatistic.cs" />
+    <Compile Include="SupplierStructure\MTimesSummaryInfo.cs" />
+    <Compile Include="SupplierStructure\SupplierCarInfo.cs" />
+    <Compile Include="SupplierStructure\SupplierHotelInfo.cs" />
+    <Compile Include="SupplierStructure\SupplierInsurance.cs" />
+    <Compile Include="SupplierStructure\SupplierOther.cs" />
+    <Compile Include="SupplierStructure\SupplierQuery.cs" />
+    <Compile Include="SupplierStructure\SupplierRestaurantInfo.cs" />
+    <Compile Include="SupplierStructure\SupplierShopping.cs" />
+    <Compile Include="SupplierStructure\SupplierSpot.cs" />
+    <Compile Include="SupplierStructure\SupplierPic.cs" />
+    <Compile Include="EnumType\FinanceStructure.cs" />
+    <Compile Include="EnumType\PlanStructure.cs" />
+    <Compile Include="EnumType\SmsStructure.cs" />
+    <Compile Include="EnumType\StatisticStructure.cs" />
+    <Compile Include="FinanceStructure\CashierRegisterInfo.cs" />
+    <Compile Include="FinanceStructure\OtherCostInfo.cs" />
+    <Compile Include="FinanceStructure\TourProfitShareInfo.cs" />
+    <Compile Include="PersonalCenterStructure\TranRemind.cs" />
+    <Compile Include="SSOEntity\MasterUserInfo.cs" />
+    <Compile Include="SSOEntity\UserInfo.cs" />
+    <Compile Include="StatisticStructure\AccountAgeStatistic.cs" />
+    <Compile Include="StatisticStructure\CompanyCash.cs" />
+    <Compile Include="StatisticStructure\CompanyCashFlow.cs" />
+    <Compile Include="StatisticStructure\EarningsStatistic.cs" />
+    <Compile Include="StatisticStructure\ExpenseStatistic.cs" />
+    <Compile Include="StatisticStructure\InayatStatistic.cs" />
+    <Compile Include="StatisticStructure\PersonnelStatistic.cs" />
+    <Compile Include="StatisticStructure\ReconcileStatistic.cs" />
+    <Compile Include="StatisticStructure\StatAllIncome.cs" />
+    <Compile Include="StatisticStructure\StatAllOut.cs" />
+    <Compile Include="SysStructure\MSysInfo.cs" />
+    <Compile Include="SysStructure\MWebmasterInfo.cs" />
+    <Compile Include="SysStructure\Permission.cs" />
+    <Compile Include="SysStructure\PermissionCategory.cs" />
+    <Compile Include="SysStructure\PermissionClass.cs" />
+    <Compile Include="CompanyStructure\SupplierContact.cs" />
+    <Compile Include="CompanyStructure\SysHandleLogs.cs" />
+    <Compile Include="CompanyStructure\SysLoginLog.cs" />
+    <Compile Include="CompanyStructure\SysRoleManage.cs" />
+    <Compile Include="CompanyStructure\UserArea.cs" />
+    <Compile Include="EnumType\AdminCenterStructure.cs" />
+    <Compile Include="EnumType\CompanyStructure.cs" />
+    <Compile Include="EnumType\PersonalCenterStructure.cs" />
+    <Compile Include="EnumType\TourStructure.cs" />
+    <Compile Include="PersonalCenterStructure\PersonDocument.cs" />
+    <Compile Include="PersonalCenterStructure\WorkExchange.cs" />
+    <Compile Include="PersonalCenterStructure\WorkPlan.cs" />
+    <Compile Include="PersonalCenterStructure\WorkReport.cs" />
+    <Compile Include="PlanStructure\PlanLocalAgencyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlanStructure\PlanTicketInfo.cs" />
+    <Compile Include="CompanyStructure\City.cs" />
+    <Compile Include="CompanyStructure\News.cs" />
+    <Compile Include="CompanyStructure\Province.cs" />
+    <Compile Include="CompanyStructure\Department.cs" />
+    <Compile Include="RouteStructure\QuoteInfo.cs" />
+    <Compile Include="RouteStructure\RouteInfo.cs" />
+    <Compile Include="SMSStructure\AccountInfo.cs" />
+    <Compile Include="SMSStructure\CustomerClass.cs" />
+    <Compile Include="SMSStructure\CustomerList.cs" />
+    <Compile Include="SMSStructure\PayMoneyInfo.cs" />
+    <Compile Include="SMSStructure\SendDetail.cs" />
+    <Compile Include="SMSStructure\SendMessageInfo.cs" />
+    <Compile Include="SMSStructure\SendTotal.cs" />
+    <Compile Include="SMSStructure\SMSSystemConfig.cs" />
+    <Compile Include="SMSStructure\CommonWords.cs" />
+    <Compile Include="SMSStructure\CommonWordClass.cs" />
+    <Compile Include="SysStructure\SysDomain.cs" />
+    <Compile Include="TourStructure\CustomerLeague.cs" />
+    <Compile Include="TourStructure\CustomerRefund.cs" />
+    <Compile Include="TourStructure\CustomerSpecialService.cs" />
+    <Compile Include="TourStructure\LineInquireQuoteInfo.cs" />
+    <Compile Include="TourStructure\QuoteAttach.cs" />
+    <Compile Include="TourStructure\TourEverydayInfo.cs" />
+    <Compile Include="TourStructure\TourInfo.cs" />
+    <Compile Include="TourStructure\TourOrder.cs" />
+    <Compile Include="TourStructure\TourOrderAboutAccount.cs" />
+    <Compile Include="TourStructure\TourOrderCustomer.cs" />
+    <Compile Include="TourStructure\TourSentTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EyouSoft.Toolkit\EyouSoft.Toolkit.csproj">
+      <Project>{99A84C7E-8F77-45C7-865E-C84478BC1EDC}</Project>
+      <Name>EyouSoft.Toolkit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

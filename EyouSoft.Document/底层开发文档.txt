@@ -1,0 +1,158 @@
+﻿A、底层开发要求(2011-01-19 汪奇志)：
+
+一、数据访问层：
+1.继承数据访问基类(EyouSoft.Toolkit.DAL.DALBase)及数据访问接口
+2.使用企业库或linq to sql方式访问数据库，根据相应业务的复杂度自己决定
+3.linq to sql 方式访问数据库时注意创建DataContext时用企业库配置的数据库连接
+4.方法及参数的说明别落下
+5.对相应的表设计有过更改的要更改相应PD文档
+6.对用户输入的内容拼接XML做为存储过程参数时要替换XML敏感字符: EyouSoft.Toolkit.Utils.ReplaceXmlSpecialCharacter(string s) 注：s为用户输入的内容而不是拼接好后的XML
+7.存储过程参数为XML时要注释XML的结构
+
+二、对象映射节点配置说明：
+数据访问层增加1个类之后,必须增加对象映射,配置文件为: WEB/Config/IDAL.Configuration.xml
+如增加了类MyObject以及接口IMyObject
+A.在configuration/unity/typeAliases节点内找到相应标签指示的位置,增加以下:
+<typeAlias alias="IMyObject" type="所在命名空间.IMyObject, EyouSoft.IDAL" />
+<typeAlias alias="MyObject" type="所在命名空间.MyObject, EyouSoft.DAL" />
+B.在configuration/unity/containers/container/types节点内找到相应标签指示的位置,增加以下:
+<type type="IMyObject" mapTo="MyObject" name="">
+<lifetime type="singleton" />
+</type>
+
+
+三、业务层：
+1.使用EyouSoft.Component.Factory.ComponentFactory.CreateDAL<IDAL>创建相应的数据访问层对象
+2.数据访问层相同业务使用多个方法的 要用代码块事务TransactionScope
+3.方法及参数的说明别落下
+4.注意部门浏览权限
+5.所有缓存标签均放入EyouSoft.Cache.Tag.相应目录结构
+6.操作日志记录调用相同的业务逻辑层方法
+7.继承业务逻辑层基类(EyouSoft.Toolkit.DAL.BLLBase)
+8.业务逻辑类的构造方法如下：
+/// <summary>
+/// 构造函数
+/// </summary>
+/// <param name="uinfo">当前登录用户信息</param>
+public 类名(EyouSoft.SSOComponent.Entity.UserInfo uinfo)
+{
+    if (uinfo != null)
+    {
+        base.DepartIds = uinfo.Departs;
+        base.CompanyId = uinfo.CompanyID;
+    }
+}
+
+
+四、枚举类型：
+均放入EyouSoft.Model.EnumType.相应目录结构
+
+
+五、目录结构：
+系统设置、供应商、客户关系、客户留言 CompanyStructure 
+散拼、团队计划、销售管理、散客天天发、组团询价、上传报价 TourStructure
+计调安排 PlanStructure
+行政中心 AdminCenterStructure
+短信中心 SMSStructure
+线路产品库 RouteStructure
+个人中心 PersonalCenterStructure
+基础数据及系统管理 SysStructure
+财务管理 FinanceStructure
+短信中心 SMSStructure
+统计分析 StatisticStructure
+统一的维护方法 UtilityStructure
+供应商(20110308新增)	SupplierStructure
+同行端(20110328新增) SiteStructure
+
+六、其它
+类注释需用以下形式：
+/// <summary>
+/// 描述：XXXXXXX
+/// </summary>
+/// 创建人 创建时间
+/// 修改人 修改时间  修改内容
+
+数据库日志规范：
+-- =============================================
+-- Author:		创建人
+-- Create date: 时间
+-- Description:	存储过程/视图..功能描述
+-- ReturnValue  返回值说明
+-- History: 修改人 修改时间 修改内容描述
+-- =============================================
+
+
+
+
+
+
+B、相关业务说明(以下所有数据维护的操作均在各自的业务逻辑完成后再在业务逻辑层调用相关方法)(2011-01-23 汪奇志)：
+
+一、描述：
+订单(含团队计划与单项服务相关的订单：下单、修改、退团、取消等操作)
+计调安排
+销售财务收退款
+出纳登账报销
+财务核算增加减少费用及利润分配
+杂费收入及支出
+
+1.每一订单、杂费收入的登记数据除各自范围内的数据外，另需写表tbl_StatAllIncome
+2.每一计调安排(含地接、机票)、杂费支出的登记数据除各自范围内的数据外，另需写表tbl_StatAllOut
+3.以上两项(1、2)各个模块内数据由相应的底层方法处理，写表操作可由统一的方法来完成(相应的底层方法各自调用统一的写表方法)
+4.订单及计调安排(含地接、机票)相应的变更只需要完成各自范围内的数据
+5.销售财务收退款、出纳登账报销操作只需要完成相应的收退款明细登记与修改
+6.杂费收入与支出只需要完成相应的收入与支出的明细登记与修改(收入暂不与收退款明细记录，支出暂不写支出明细记录)
+7.财务核算增加减少费用及利润分配操作只需要完成相应的表的操作
+
+
+二、统一维护的方法
+1.线路上团数维护，方法参数(线路编号的数组)
+发布计划(散拼、团队)、修改(注意对原引用线路也要统计)、删除
+
+2.线路收客数维护，方法参数(线路编号的数组) 注：修改团队时也会对收客数有影响
+新增、修改、删除订单(含团队计划的订单)、修改计划(散拼、团队)
+
+3.团队收入维护，方法参数(项目类型，项目编号) 类型为订单或杂费
+订单操作、杂费收入操作、团队核算收入块的操作
+
+4.团队支出维护，方法参数(项目类型，项目编号)类型为地接、机票、杂费
+计调安排(含地接、机票)、杂费支出、团队核算支出块的操作
+
+5.收款维护，方法参数(收款明细编号)
+
+6.退款维护，方法参数(退款明细编号)
+
+7.支出支付维护，方法参数（支出支付明细编号）
+
+8.团队利润分配维护
+
+
+C、SQL计划(2011-01-28 汪奇志)：
+
+1.团队状态维护计划（每天）
+	过程名称：SQLPlan_Tour
+2.团队是否已出团计划（每天）
+	过程名称：SQLPlan_Tour
+3.订单留位自动过期计划（2分钟）
+	存储过程名：SQLPlan_TourOder_SaveSeatUpdate ;
+	操作说明：将留位且留位时间小于当前时间的订单设置成自动留位；
+4.现金流量统计计划（每天）
+	过程名称：SqlPlan_CompanyCash_Init
+5.客户关怀信息更新当天是否已发送为0（每天），条件为FixType>0
+	过程名称：SQLPlan_CustomerCarefor_UpdateIsSeded
+
+注：计划的存储过程名称以SQLPlan_开头
+
+
+D、后台服务(2011-01-28 汪奇志)
+1.客户关怀发短息服务
+2.短信中心发送短信服务
+
+注：定时短信当后台服务读取到要发送的记录后，就认为该任务短信已发送
+
+
+E、缓存
+1.登录用户信息
+2.公司部门信息(同级部门及下级部门用户)，用于组织机构浏览权限控制
+3.公司配置信息
+

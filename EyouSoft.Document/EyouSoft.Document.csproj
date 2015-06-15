@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F551A14E-FBD9-4B08-A402-EC9C09BE2DFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EyouSoft.Document</RootNamespace>
+    <AssemblyName>EyouSoft.Document</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PowerDesigner\use case.oob" />
+    <None Include="PowerDesigner\use case.oom" />
+    <None Include="PowerDesigner\巴比来PD.pdm" />
+    <None Include="策划文档\%2820110523%29专线版管理系统.mmap" />
+    <None Include="策划文档\%2820110610%29网站修改.doc" />
+    <None Include="策划文档\%2820110620%29巴比来.doc" />
+    <None Include="策划文档\%2820110629%29芭比来.doc" />
+    <None Include="策划文档\%2820110713%29望海系统修改.doc" />
+    <None Include="策划文档\%2820110818%29wh网站修改.doc" />
+    <None Include="策划文档\%28201202150001%29望海假期需求.doc" />
+    <None Include="策划文档\%28201202210001%29bbl.doc" />
+    <None Include="策划文档\%28201203220001%29芭比来.doc" />
+    <None Include="策划文档\yiyongtongnew%282010-1-11%29.rar" />
+    <None Include="策划文档\上海诚信%282011-04-18%29.mmap" />
+    <None Include="策划文档\巴比来、望海项目%28策划文档%29.mmap" />
+    <None Include="策划文档\巴比来二次修改%2820110413%29.mmap" />
+    <None Include="策划文档\巴比来修改%2820110314%29.mmap" />
+    <None Include="策划文档\望海二次修改%2820110322%29.mmap" />
+    <None Include="策划文档\望海修改%2820110307%29.mmap" />
+    <None Include="策划文档\望海假期新增需求确认函%2820110425%29.doc" />
+    <None Include="策划文档\望海假期需求确认函%2820110425%29.doc" />
+    <None Include="策划文档\海口民间.mmap" />
+    <None Include="策划文档\芭比莱任务分配%28底层%29.mmap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PowerDesigner\巴比来PD.pdb" />
+    <Content Include="变更文档\%2820110620%29巴比来.doc.底层变更.txt" />
+    <Content Include="应用开发文档.txt" />
+    <Content Include="底层开发文档.txt" />
+    <Content Include="策划文档\%2820110607%29bbl.txt" />
+    <Content Include="策划文档\%2820110610%29策划文档.txt" />
+    <Content Include="策划文档\%2820110803%29wh.txt" />
+    <Content Include="策划文档\%2820111026%29bbl.txt" />
+    <Content Include="策划文档\%2820120104%29bbl.txt" />
+    <Content Include="策划文档\%28201201100001%29bbl.txt" />
+    <Content Include="策划文档\%28201201130001%29bbl.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

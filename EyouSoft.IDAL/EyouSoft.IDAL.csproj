@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C596872E-9448-4E1F-8D4C-0005873ED428}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EyouSoft.IDAL</RootNamespace>
+    <AssemblyName>EyouSoft.IDAL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminCenterStructure\IAttendanceInfo.cs" />
+    <Compile Include="AdminCenterStructure\IContractInfo.cs" />
+    <Compile Include="AdminCenterStructure\IDutyManager.cs" />
+    <Compile Include="AdminCenterStructure\IFixedAsset.cs" />
+    <Compile Include="AdminCenterStructure\IMeetingInfo.cs" />
+    <Compile Include="AdminCenterStructure\IPersonnelInfo.cs" />
+    <Compile Include="AdminCenterStructure\IRuleInfo.cs" />
+    <Compile Include="AdminCenterStructure\ITrainPlan.cs" />
+    <Compile Include="CompanyStructure\IArea.cs" />
+    <Compile Include="CompanyStructure\ICity.cs" />
+    <Compile Include="CompanyStructure\ICompanyBrand.cs" />
+    <Compile Include="CompanyStructure\ICompanyCity.cs" />
+    <Compile Include="CompanyStructure\ICompanyCustomStand.cs" />
+    <Compile Include="CompanyStructure\ICompanyProvince.cs" />
+    <Compile Include="CompanyStructure\ICompanySetting.cs" />
+    <Compile Include="CompanyStructure\ICustomerMessageReply.cs" />
+    <Compile Include="CompanyStructure\INotepadService.cs" />
+    <Compile Include="FinanceStructure\IFaPiao.cs" />
+    <Compile Include="FinanceStructure\IGoldDetail.cs" />
+    <Compile Include="FinanceStructure\IShouRu.cs" />
+    <Compile Include="FinanceStructure\ISpendRegister.cs" />
+    <Compile Include="FinanceStructure\IZhiChu.cs" />
+    <Compile Include="PlanStruture\IPlanTrffic.cs" />
+    <Compile Include="SiteStructure\ISiteBasicConfig.cs" />
+    <Compile Include="SiteStructure\ISiteChangePic.cs" />
+    <Compile Include="SiteStructure\ISiteFriendLink.cs" />
+    <Compile Include="SiteStructure\ITicketPolicy.cs" />
+    <Compile Include="StatisticStructure\ICommissionStat.cs" />
+    <Compile Include="StatisticStructure\IHuiKuanLv.cs" />
+    <Compile Include="StatisticStructure\IRefundStatistic.cs" />
+    <Compile Include="StatisticStructure\ISalesStatistics.cs" />
+    <Compile Include="StatisticStructure\ISoldStatistic.cs" />
+    <Compile Include="StatisticStructure\ITicketOutStatistic.cs" />
+    <Compile Include="SupplierStructure\ISupplierCarTeam.cs" />
+    <Compile Include="SupplierStructure\ISupplierHotel.cs" />
+    <Compile Include="SupplierStructure\ISupplierInsurance.cs" />
+    <Compile Include="SupplierStructure\ISupplierRestaurant.cs" />
+    <Compile Include="SupplierStructure\ISupplierShopping.cs" />
+    <Compile Include="CompanyStructure\ICompanyUser.cs" />
+    <Compile Include="CompanyStructure\ICustomer.cs" />
+    <Compile Include="CompanyStructure\ICompanyInfo.cs" />
+    <Compile Include="CompanyStructure\ICompanySupplier.cs" />
+    <Compile Include="CompanyStructure\ICustomerCareFor.cs" />
+    <Compile Include="CompanyStructure\IDepartment.cs" />
+    <Compile Include="CompanyStructure\INews.cs" />
+    <Compile Include="CompanyStructure\ICompanyPriceStand.cs" />
+    <Compile Include="CompanyStructure\IProvince.cs" />
+    <Compile Include="CompanyStructure\ISysHandleLogs.cs" />
+    <Compile Include="CompanyStructure\ISysLoginLog.cs" />
+    <Compile Include="CompanyStructure\ISysRoleManage.cs" />
+    <Compile Include="FinanceStructure\ICashierRegister.cs" />
+    <Compile Include="FinanceStructure\IOtherCost.cs" />
+    <Compile Include="FinanceStructure\IOutRegister.cs" />
+    <Compile Include="FinanceStructure\ITourProfitShareInfo.cs" />
+    <Compile Include="PlanStruture\IPlanSingle.cs" />
+    <Compile Include="RouteStructure\IQuote.cs" />
+    <Compile Include="PersonalCenterStructure\IPersonDocument.cs" />
+    <Compile Include="PersonalCenterStructure\IWorkExchange.cs" />
+    <Compile Include="PersonalCenterStructure\IWorkPlan.cs" />
+    <Compile Include="PersonalCenterStructure\IWorkReport.cs" />
+    <Compile Include="PlanStruture\IPlaneTicket.cs" />
+    <Compile Include="PlanStruture\ITravelAgency.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteStructure\IRoute.cs" />
+    <Compile Include="SMSStructure\IAccount.cs" />
+    <Compile Include="SMSStructure\ICommonWords.cs" />
+    <Compile Include="SMSStructure\ICustomerList.cs" />
+    <Compile Include="SMSStructure\ISendMessage.cs" />
+    <Compile Include="StatisticStructure\IAccountAgeStatistic.cs" />
+    <Compile Include="StatisticStructure\ICompanyCash.cs" />
+    <Compile Include="StatisticStructure\ICompanyCashFlow.cs" />
+    <Compile Include="StatisticStructure\IEarningsStatistic.cs" />
+    <Compile Include="StatisticStructure\IInayatStatistic.cs" />
+    <Compile Include="StatisticStructure\IPersonnelStatistic.cs" />
+    <Compile Include="StatisticStructure\IStatAllIncome.cs" />
+    <Compile Include="StatisticStructure\IStatAllOut.cs" />
+    <Compile Include="SupplierStructure\ISupplierSpot.cs" />
+    <Compile Include="SysStructure\IPermission.cs" />
+    <Compile Include="SysStructure\ISys.cs" />
+    <Compile Include="SysStructure\ISysDomain.cs" />
+    <Compile Include="TourStructure\ILineInquireQuoteInfo.cs" />
+    <Compile Include="TourStructure\IQuoteAttach.cs" />
+    <Compile Include="TourStructure\ITour.cs" />
+    <Compile Include="TourStructure\ITourEveryday.cs" />
+    <Compile Include="TourStructure\ITourOrder.cs" />
+    <Compile Include="UtilityStructure\IUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EyouSoft.Model\EyouSoft.Model.csproj">
+      <Project>{41BB31BF-A4C6-4994-AFBA-B559034010C7}</Project>
+      <Name>EyouSoft.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

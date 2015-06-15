@@ -1,0 +1,375 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Back.master.cs" Inherits="Web.masterpage.Back" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="/css/sytle.css" rel="stylesheet" type="text/css" />
+    <link href="/css/boxy.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      <% if (BigLogo!=null && BigLogo.Trim() != "")
+      {%>
+   .top{ background:url(<%=BigLogo%>) no-repeat 0 0;}
+   <%}
+      else
+      {%>
+   .top{ background: no-repeat 0 0;}
+   <%} %>
+    </style>
+
+    <script src="/js/jquery.js" type="text/javascript"></script> 
+
+    <script src="/js/back.js" type="text/javascript"></script>
+
+    <script src="/js/jquery.boxy.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $(".lineProduct h2").click(function() {
+                var h = $(this);
+                var $a = h.next();
+                if ($a.length == 0) {
+                    return;
+                }
+                $a.toggle();
+                var b = true;
+                if ($a.css("display") == "none") {
+                    b = false;
+                } else {
+                    b = true;
+                }
+                $a.prev("h2").toggleClass("firstNav", b);
+            });
+            setInterval(function() {
+                if (GetMinsFromTheLastLoginTime() >= 1) {
+                    $.newAjax({
+                        url: "/Common/AwakePage.aspx",
+                        dataType: 'html',
+                        cache: false,
+                        success: function(msg) {
+                            if (msg) {
+                                var _width = 250;
+                                var _height = 200;
+                                var mywindow = window.open("", "awakewindow", "alwaysRaised=yes ,height=" + _height + "px, width=" + _width + "px,left=" + (window.screen.width - _width - 13) + ", top=" + (window.screen.height - _height - 58) + ", toolbar =no, menubar=no,directories=no, scrollbars=no, resizable=no, location=no, status=no");
+                                mywindow.document.title = "新的提醒";
+                                mywindow.document.body.style.fontSize = "12px";
+                                mywindow.document.body.style.lineHeight = "15px";
+                                var s = "http://" + mywindow.opener.location.host;
+                                //mywindow.document.body.innerHTML = msg.replace(/http/g, s);
+                                mywindow.document.body.innerHTML = "";
+                                mywindow.document.write(msg.replace(/http/g, s));
+                            }
+                        }
+                    });
+                }
+            }, <%=TanChuangTiXingInterval %>);
+
+        });
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="wrapper" class="mid">
+        <div class="top">
+            <div class="topleft">
+                <%=backPage.SiteUserInfo.CompanyName %></div>
+            <div class="topright" style="top: 0px; height: 87px; right: 5px; ">
+                <ul>
+                <li><a href="javascript:history.go(-1);">后退</a></li>
+                <li>
+                    当前登录：<%=backPage.SiteUserInfo.UserName%>
+                </li>
+                    <li>
+                        <img src="/images/dateicon.gif" alt="" width="13" height="13" />
+                        <span id="timeDiv">
+                            <%=DateTime.Now.ToString("yyyy年M月d日 dddd HH:mm:ss")   %></span></li>
+                    <%--<li><a href="/GroupEnd/Default.aspx"><img src="/images/homeicon.gif" alt="网站首页" />网站首页</a></li>--%>
+                    <li><a href="/Logout.aspx">
+                        <img src="/images/safeicon.gif" alt="安全退出" />安全退出</a></li>
+                </ul>
+            </div>
+
+            <script type="text/javascript">
+        <% DateTime tmpDate = DateTime.Now;%>
+        serverDate = new Date(
+        <%=tmpDate.Year %>,
+        <%=tmpDate.Month-1 %>,
+        <%=tmpDate.Day %>,
+        <%=tmpDate.ToString("HH") %>,
+        <%=tmpDate.Minute %>,
+        <%=tmpDate.Second %>);
+        setInterval('getNowDate()',1000);
+            </script>
+
+            <div class="clearboth">
+            </div>
+        </div>
+        <div class="main">
+            <!--left start-->
+            <div class="left">
+                <div class="lineProduct" runat="server" id="divXianLu">
+                    <h2 runat="server" id="h2Xianlu">
+                        <a href="javascript:;">线路产品库</a></h2>
+                    <ul id="ulXianlu" runat="server" style="display: none;">
+                        <li id="liLineProducts" runat="server"><a href="/xianlu/LineProducts.aspx" runat="server"
+                            id="linkLineProducts">线路管理</a></li>
+                        <li id="liMarketing" runat="server"><a href="/CRM/PersonStatistics/AreaList.aspx?type=xianlu"
+                            runat="server" id="linkMarketing">营销分析</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSanPing">
+                    <h2 runat="server" id="h2SanPing">
+                        <a href="javascript:;">散拼计划</a></h2>
+                    <ul id="ulSanPing" style="display: none;" runat="server">
+                        <li id="liSanPing" runat="server"><a href="/sanping/Default.aspx" runat="server"
+                            id="linkSanPing">散拼计划</a></li>
+                        <li id="liDayDay" runat="server"><a href="/sanping/DaydayPublish.aspx" runat="server"
+                            id="linkDayDay">散客天天发</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divTeamPlan">
+                    <h2 runat="server" id="h2TeamPlan">
+                        <a href="javascript:;">团队计划</a></h2>
+                    <ul id="ulTeamPlan" style="display: none;" runat="server">
+                        <li id="liTeamPlan" runat="server"><a href="/TeamPlan/TeamPlanList.aspx" runat="server"
+                            id="linkTeamPlan">团队计划</a></li>
+                        <li id="liTeamPrice" runat="server"><a href="/TeamPlan/TourAskPriceList.aspx" runat="server"
+                            id="linkTeamPrice">组团社询价</a></li>
+                        <li id="liTourQuoteList" runat="server"><a href="/TeamPlan/TourQuoteList.aspx" runat="server"
+                            id="linkTourQuoteList">上传报价</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSingleServer">
+                    <h2 runat="server" id="h2SingleServer">
+                        <a href="javascript:;">单项服务</a></h2>
+                    <ul id="ulSingleServer" style="display: none;" runat="server">
+                        <li id="liSingleSeverList" runat="server"><a href="/SingleServe/SingleServeList.aspx"
+                            runat="server" id="linkSingleSeverList">单项服务</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSales">
+                    <h2 runat="server" id="h2Sales">
+                        <a href="javascript:;">销售管理</a></h2>
+                    <ul id="ulSales" style="display: none;" runat="server">
+                        <li id="liOrderList" runat="server"><a href="/sales/Order_List.aspx" runat="server"
+                            id="linkOrderList">订单中心</a></li>
+                        <li id="liSaleList" runat="server"><a href="/sales/Sale_List.aspx" runat="server"
+                            id="linkSaleList">销售收款</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divJiPiao">
+                    <h2 runat="server" id="h2JiPiao">
+                        <a href="javascript:;">机票管理</a></h2>
+                    <ul id="ulJiPiao" style="display: none;" runat="server">
+                        <li id="liJiPiaoList" runat="server">
+                           <a href="/jipiao/JiPiao_List.aspx" runat="server" id="linkJiPiaoList">机票管理</a>
+                        </li>
+                        <li id="liJiPiaotj" runat="server">
+                           <a href="/jipiao/TicketStatistics/TicketStatisticslist.aspx"  runat="server" id="linkliJiPiaotj">出票统计</a>
+                        </li>
+                        <li id="liTicketRefund" runat="server">
+                           <a href="/jipiao/JiPiao_TuiList.aspx" runat="server" id="linkTicketRefund">退票统计</a>
+                        </li>
+                       <li id="litrafficlist" runat="server">
+                           <a id="linktrafficlist" runat="server" href="/jipiao/Traffic/trafficList.aspx">交通管理</a>
+                       </li>
+                       <li id="litrafficStatis" runat="server">
+                         <a id="linktrafficStatis" runat="server" href="/jipiao/Traffic/trafficStatisList.aspx">交通出票统计</a>
+                       </li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSupplier">
+                    <h2 runat="server" id="h2Supplier">
+                        <a href="javascript:;">供应商管理</a></h2>
+                    <ul id="ulSupplier" style="display: none;" runat="server">
+                        <li id="liAreaConnect" runat="server"><a href="/SupplierControl/AreaConnect/AreaConnect.aspx"
+                            runat="server" id="linkAreaConnect">地接</a></li>
+                        <li id="liTicketService" runat="server"><a href="/SupplierControl/TicketService/TicketService.aspx"
+                            runat="server" id="linkTicketService">售票处</a></li>
+                        <li runat="server" id="liHotelService"><a href="/SupplierControl/Hotels/HotelList.aspx"
+                            runat="server" id="linkHotelService">酒店</a></li>
+                        <li runat="server" id="liRestService"><a href="/SupplierControl/Restaurants/Restaurantslist.aspx"
+                            runat="server" id="linkRestService">餐馆</a></li>
+                        <li runat="server" id="liCarService"><a href="/SupplierControl/CarsManager/CarsList.aspx"
+                            runat="server" id="linkCarService">车队</a></li>
+                        <li runat="server" id="liAreaService"><a href="/SupplierControl/SightManager/SightList.aspx"
+                            runat="server" id="linkAreaService">景点</a></li>
+                        <li runat="server" id="liShopService"><a href="/SupplierControl/Shopping/Default.aspx"
+                            runat="server" id="linkShopService">购物</a></li>
+                        <li runat="server" id="liInsuranceService"><a href="/SupplierControl/Insurance/Insurancelist.aspx"
+                            runat="server" id="linkInsuranceService">保险</a></li>
+                        <li runat="server" id="liOtherService"><a href="/SupplierControl/Others/Default.aspx"
+                            runat="server" id="linkOtherService">其它</a></li>
+                        <li runat="server" id="liAirLine"><a href="/SupplierControl/AirLine/AirLineList.aspx"
+                            runat="server" id="linkAirLine">航空公司</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divCRM">
+                    <h2 runat="server" id="h2CRM">
+                        <a href="javascript:;">客户关系管理</a></h2>
+                    <ul id="ulCRM" style="display: none;" runat="server">
+                        <li id="liCustomerList" runat="server"><a href="/CRM/customerinfos/CustomerList.aspx"
+                            runat="server" id="linkCustomerList">客户资料</a></li>
+                        <li id="liMarketActive" runat="server"><a href="/CRM/customerservice/MarketActive.aspx"
+                            runat="server" id="linkMarketActive">客户服务</a></li>
+                        <li id="liAreaList" runat="server"><a href="/CRM/PersonStatistics/AreaList.aspx"
+                            runat="server" id="linkAreaList">销售分析</a></li>
+                        <li id="liSellStat" runat="server"><a href="/CRM/SellStat/SellStat.aspx" runat="server"
+                            id="linkSellStat">销售统计</a></li>
+                            <li id="liBackMoney" runat="server"><a href="/CRM/ReturnStatistics/ReturnList.aspx" runat="server"
+                            id="linkBackMoney">返佣统计</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divCaiWu">
+                    <h2 runat="server" id="h2CaiWu">
+                        <a href="javascript:;">财务管理</a></h2>
+                    <ul id="ulCaiWu" style="display: none;" runat="server">
+                        <li id="liTeamAccount" runat="server"><a href="/caiwuguanli/TeamAccount.aspx" runat="server"
+                            id="linkTeamAccount">团队核算</a></li>
+                        <li id="liSrTuanKuanList" runat="server"><a href="/caiwuguanli/srtuankuan_list.aspx"
+                            runat="server" id="linkSrTuanKuanList">团款收入</a></li>
+                        <li id="liIncome" runat="server"><a href="/caiwuguanli/Income.aspx" runat="server"
+                            id="linkIncome">杂费收入</a></li>
+                        <li id="liTeamExpend" runat="server"><a href="/caiwuguanli/TeamExpenditure.aspx"
+                            runat="server" id="linkTeamExpend">团款支出</a></li>
+                        <li id="liOtherExpend" runat="server"><a href="/caiwuguanli/Expenditure.aspx" runat="server"
+                            id="linkOtherExpend">杂费支出</a></li>
+                        <li id="liChuNa" runat="server"><a href="/caiwuguanli/chunadz_list.aspx" runat="server"
+                            id="linkChuNa">出纳登帐</a></li>
+                        <li id="liJipiaoAudit" runat="server"><a href="/caiwuguanli/JiPiaoAudit.aspx" runat="server"
+                            id="linkJipiaoAudit">机票审核</a></li>
+                        <li id="liFaPiaoGuanLi" runat="server"><a href="/caiwuguanli/fapiaoguanli.aspx" runat="server"
+                            id="linkFaPiaoGuanLi">发票管理</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divStat">
+                    <h2 runat="server" id="h2Stat">
+                        <a href="javascript:;">统计分析</a></h2>
+                    <ul id="ulStat" style="display: none;" runat="server">
+                        <li id="liPreAreaStat" runat="server"><a href="/StatisticAnalysis/PersonTime/PerAreaStatisticList.aspx"
+                            runat="server" id="linkPreAreaStat">人次统计</a></li>
+                        <li id="liEmpIncomeStat" runat="server"><a href="/StatisticAnalysis/EmployeeAchievementsTime/EmpIncomeStatisticList.aspx"
+                            runat="server" id="linkEmpIncomeStat">员工业绩表</a></li>
+                        <li id="liProAreaStat" runat="server"><a href="/StatisticAnalysis/ProfitStatistic/ProAreaStatisticList.aspx"
+                            runat="server" id="linkProAreaStat">利润统计</a></li>
+                        <li id="liIncAreaStat" runat="server"><a href="/StatisticAnalysis/IncomeAccount/IncDepartmentStatisticList.aspx"
+                            runat="server" id="linkIncAreaStat">收入对帐单</a></li>
+                        <li id="liOutAreaStat" runat="server"><a href="/StatisticAnalysis/OutlayAccount/OutDepartmentStatisticList.aspx"
+                            runat="server" id="linkOutAreaStat">支出对帐单</a></li>
+                        <li id="liAgeAreaStat" runat="server"><a href="/StatisticAnalysis/Ageanalysis/AgeDepartmentStatisticList.aspx"
+                            runat="server" id="linkAgeAreaStat">帐龄分析表</a></li>
+                        <li id="liCasDayStat" runat="server"><a href="/StatisticAnalysis/CashFlow/CasDayStaList.aspx"
+                            runat="server" id="linkCasDayStat">现金流量表</a></li>
+                        <li id="liSoldStat" runat="server"><a href="/StatisticAnalysis/SoldStatistic/SoldStaList.aspx"
+                            runat="server" id="linkSoldStat">销售统计分析</a></li>
+                        <li id="liSellProfit" runat="server"><a href="/StatisticAnalysis/SaleProfitcount/SaleProfitcount.aspx" id="linkProfit" runat="server">
+                            销售利润统计</a></li>
+                        <li id="liAreaSoldStat" runat="server"><a href="/StatisticAnalysis/SoldStatistic/AreaSoldStaList.aspx"
+                            runat="server" id="linkAreaSoldStat">区域销售统计</a></li>
+                        <li id="liHuiKuanLv" runat="server"><a href="/StatisticAnalysis/HuiKuanLv/HuiKuanLv.aspx" runat="server" id="AHuiKuanLv">回款率分析</a></li>
+                        <li id="liZhiChuZhangLing" runat="server"><a href="/StatisticAnalysis/ZhiChuZhangLing/ZhiChuZhangLing.aspx" id="AZhiChuZhangLing" runat="server">支出账龄分析</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divAdministrativeCenter">
+                    <h2 runat="server" id="h2AdministrativeCenter">
+                        <a href="javascript:;">行政中心</a></h2>
+                    <ul id="ulAdministrativeCenter" style="display: none;" runat="server">
+                        <li id="liPositionManage" runat="server"><a href="/administrativeCenter/positionManage/Default.aspx"
+                            runat="server" id="linkPositionManage">职务管理</a></li>
+                        <li id="liPersonnelFiles" runat="server"><a href="/administrativeCenter/personnelFiles/Default.aspx"
+                            runat="server" id="linkPersonnelFiels">人事档案</a></li>
+                        <li id="liAttendanceManage" runat="server"><a href="/administrativeCenter/attendanceManage/Default.aspx"
+                            runat="server" id="linkAttendanceManage">考勤管理</a></li>
+                        <li id="liAddressList" runat="server"><a href="/administrativeCenter/addressList/Default.aspx"
+                            runat="server" id="linkAddresssList">内部通讯录</a></li>
+                        <li id="liBylaw" runat="server"><a href="/administrativeCenter/bylaw/Default.aspx"
+                            runat="server" id="linkBylaw">规章制度</a></li>
+                        <li id="liCahierManage" runat="server"><a href="/administrativeCenter/cahierManage/Default.aspx"
+                            runat="server" id="linkCahierManage">会议记录管理</a></li>
+                        <li id="liContractManage" runat="server"><a href="/administrativeCenter/contractManage/Default.aspx"
+                            runat="server" id="linkContractManage">劳动合同管理</a></li>
+                        <li id="liFixedAssetsManage" runat="server"><a href="/administrativeCenter/fixedAssetsManage/Default.aspx"
+                            runat="server" id="linkFixedAssetsManage">固定资产管理</a></li>
+                        <li id="liTrainingPlan" runat="server"><a href="/administrativeCenter/trainingPlan/Default.aspx"
+                            runat="server" id="linkTrainingPlan">培训计划</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSystemSet">
+                    <h2 runat="server" id="h2SystemSet">
+                        <a href="javascript:;">系统设置</a></h2>
+                    <ul id="ulSystemSet" style="display: none;" runat="server">
+                        <li id="liCityManage" runat="server"><a href="/systemset/basicinfo/CityManage.aspx"
+                            runat="server" id="linkCityManage">基础设置</a></li>
+                        <li id="liDepartManage" runat="server"><a href="/systemset/organize/DepartManage.aspx"
+                            runat="server" id="linkDepartManage">组织机构</a></li>
+                        <li id="liRolesManage" runat="server"><a href="/systemset/rolemanage/RolesManage.aspx"
+                            runat="server" id="linkRolesManage">角色管理</a></li>
+                        <li id="liCompanyInfo" runat="server"><a href="/systemset/companyInfo.aspx" runat="server"
+                            id="linkCompanyInfo">公司信息</a></li>
+                        <li id="liInfoList" runat="server"><a href="/systemset/infomanage/InfoList.aspx"
+                            runat="server" id="linkInfoList">信息管理</a></li>
+                        <li id="liConfigSet" runat="server"><a href="/systemset/configset.aspx" runat="server"
+                            id="linkConfigSet">系统配置</a></li>
+                        <li id="liLogList" runat="server"><a href="/systemset/systemlog/LogList.aspx" runat="server"
+                            id="linkLogList">系统日志</a></li>
+                        <li id="liPeer" runat="server"><a href="/systemset/ToGoTerrace/BaseManage.aspx" runat="server"
+                            id="linkPeer">同行平台</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="div2UserCenter">
+                    <h2 runat="server" id="h2UserCenter">
+                        <a href="javascript:;">个人中心</a></h2>
+                    <ul id="ulUserCenter" style="display: none;" runat="server">
+                        <li id="liAppectAwake" runat="server"><a href="/UserCenter/WorkAwake/AppectAwake.aspx"
+                            runat="server" id="linkAppectAwake">事务提醒</a></li>
+                        <li id="liNotice" runat="server"><a href="/UserCenter/Notice/Notice.aspx" runat="server"
+                            id="linkNotice">公告通知</a></li>
+                        <li id="liDomManage" runat="server"><a href="/UserCenter/DomManager/DomManager.aspx"
+                            runat="server" id="linkDomManager">文档管理</a></li>
+                        <li id="liWorkReport" runat="server"><a href="/UserCenter/WorkExchange/WorkReport.aspx"
+                            runat="server" id="linkWorkReport">工作交流</a></li>
+                        <li id="liUserInfo" runat="server"><a href="/UserCenter/UserInfo/UserInfo.aspx" runat="server"
+                            id="linkUserInfo">个人信息</a></li>
+                        <li id="liTasksList" runat="server"><a href="/UserCenter/SendTasks/TasksList.aspx"
+                            runat="server" id="linSendTasks">送团任务表</a></li>
+                        <li id="liMessage" runat="server"><a href="/UserCenter/Message/MessageBoard.aspx"
+                            runat="server" id="linkMessage">留言板</a></li>
+                    </ul>
+                </div>
+                <div class="lineProduct" runat="server" id="divSMS">
+                    <h2 runat="server" id="h2SMS">
+                        <a href="javascript:;">短信中心</a></h2>
+                    <ul id="ulSMS" style="display: none;" runat="server">
+                        <li id="liSendSMS" runat="server"><a href="/SMS/SendSms.aspx" runat="server" id="linkSendSMS">
+                            发送短信</a></li>
+                        <li id="liSMSCustomerList" runat="server"><a href="/SMS/SmsCustomerList.aspx" runat="server"
+                            id="linkSMSCustomerList">客户列表</a></li>
+                        <li id="liSendHistory" runat="server"><a href="/SMS/SendHistory.aspx" runat="server"
+                            id="linkSendHistory">发送历史</a></li>
+                        <li id="liCommonSMS" runat="server"><a href="/SMS/CommonSms.aspx" runat="server"
+                            id="linkCommonSMS">常用短信</a></li>
+                        <li id="liAccountInfo" runat="server"><a href="/SMS/AccountInfo.aspx" runat="server"
+                            id="linkAccountInfo">帐户信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--left end-->
+            <div class="hr_10">
+            </div>
+            <asp:ContentPlaceHolder ID="c1" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="clearboth">
+            </div>
+        </div>
+    </div>
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 20px;">
+        <tr>
+            <td height="35" align="center">
+                版权所有：<%=backPage.SiteUserInfo.CompanyName %>
+                技术支持：杭州易诺科技
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
